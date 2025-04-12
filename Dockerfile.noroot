@@ -15,7 +15,6 @@ RUN set -ex \
     jq \
     net-snmp-tools \
     netcat-openbsd \
-    ngrep \
     openssl \
     openssh \
     oh-my-zsh \
@@ -25,7 +24,7 @@ RUN set -ex \
 
 # Setting User and Home
 RUN adduser -D debug -u 1000
-USER debug
+USER 1000
 WORKDIR /home/debug
 ENV HOSTNAME=netshoot
 

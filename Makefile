@@ -2,7 +2,7 @@
 
 # Build Vars
 IMAGENAME=dezmodue/netshoot-no-root
-VERSION=0.13.0
+VERSION=0.13.1
 
 
 .DEFAULT_GOAL := all
