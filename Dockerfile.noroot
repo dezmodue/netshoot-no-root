@@ -1,0 +1,35 @@
+FROM alpine:3.21.3
+
+RUN set -ex \
+    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
+    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
+    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
+    && apk update \
+    && apk upgrade \
+    && apk add --no-cache \
+    bash \
+    bind-tools \
+    busybox-extras \
+    curl \
+    dhcping \
+    jq \
+    net-snmp-tools \
+    netcat-openbsd \
+    ngrep \
+    openssl \
+    openssh \
+    oh-my-zsh \
+    vim \
+    git \
+    zsh
+
+# Setting User and Home
+RUN adduser -D debug -u 1000
+USER debug
+WORKDIR /home/debug
+ENV HOSTNAME=netshoot
+
+COPY motd motd
+COPY bashrc .bashrc
+
+CMD ["bash"]
